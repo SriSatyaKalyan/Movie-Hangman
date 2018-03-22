@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
 
 public class ArrayManager {
@@ -27,4 +28,10 @@ public class ArrayManager {
         return anArray.get(n);
     }
 
+    public void printArray(List<String> anArray) {
+        for (int i = 0; i < anArray.size(); i++){
+            System.out.print(anArray.get(i) +" ");
+
+        }
+    }
 }
