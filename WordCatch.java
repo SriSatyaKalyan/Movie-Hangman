@@ -1,3 +1,5 @@
+import com.sun.org.apache.xpath.internal.operations.Equals;
+
 import java.io.File;
 import java.util.Scanner;
 import java.util.ArrayList;
@@ -27,24 +29,32 @@ public class WordCatch {
         String moviename = (String) Array.randomName(filearray);
         System.out.println("The random name is " + moviename);
         int lengthofname = moviename.length();
+        System.out.println("The lengthofname is " + lengthofname);
         //System.out.println("The second element is " + moviename.substring(2,3));
 
         for (int i = 1; i <= lengthofname; i++){
             guessedname.add("_");
+            //System.out.println(guessedname);
         }
-        System.out.println(guessedname);
-        Array.printArray(guessedname);
+
+
+        //System.out.println(moviename.charAt(3));
+        //System.out.println(guessedname);
+        //Array.printArray(guessedname);
         System.out.println(" ");
 
         System.out.println("Now guess the movie.");
         int itercount = 0;
         int correctcount = 0;
         int numberofguesses = 10;
-        while (numberofguesses >= 0){
+        int spacecount  = Array.checkSpaces(moviename, guessedname);
+        Array.printArray(guessedname);
+        while (numberofguesses > 0){
+            boolean breakset = false;
             correctindex.clear();
             System.out.println(" ");
-            System.out.println("You have " + numberofguesses + " wrong guesses left.");
-            System.out.println("The wrong guesses made by you are: ");
+            System.out.println("You have " + numberofguesses + " wrong guess(es) left.");
+            System.out.print("The wrong guesses made by you are: ");
             Array.printArray(wrongguesses);
 
             System.out.println(" ");
@@ -74,13 +84,35 @@ public class WordCatch {
                 guessedname.set(correctindex.get(index), guess);
             }
             Array.printArray(guessedname);
-            System.out.println(guessedname);
+            //System.out.println(guessedname);
 
-            for (int check = 0; check < guessedname.size(); check++){
-                if (guessedname.contains("_")){
-                    System.out.println("Keep Guessing");
+            if (numberofguesses == 0){       // Logic for game loosing
+                System.out.println("You have used all of your 10 guesses. GAME OVER!!");
+                breakset = true;
+            }
+
+            //System.out.println("The spacecount is " + spacecount);
+            //int noblankspaces = 0;       //Logic for game winning
+            int blankspaces = 0;
+            String search = "_";
+            for(String str: guessedname) {
+                if(str.trim().contains(search)) {
+                    blankspaces += 1;
                 }
             }
+
+            System.out.println("The blankspaces is " + blankspaces);
+
+            if (blankspaces == 0){
+                System.out.println("YOU WON");
+                breakset = true;
+                break;
+            }
+
+            if (breakset){
+                break;
+            }
+
         }
 
     }
