@@ -10,8 +10,8 @@ public class WordCatch {
 
         ArrayList filearray = new ArrayList();                         //Declared an instance called "filearray" belonging to the ArrayList
         ArrayManager Array = new ArrayManager();                       //Declared an instance called "Array" belonging to the ArrayManager class defined by me
-        List<String> guessedname = new ArrayList<String>();                 //Created StringLists named 'guessedname' and 'wrongguess' & IntegerList called 'correctindex'
-        List<String> wrongguesses = new ArrayList<String>();                //'guessedname' is used to take in the correct guesses of user and embed them if the characters are present in the movie name
+        List<String> guessedname = new ArrayList<String>();            //Created StringLists named 'guessedname' and 'wrongguess' & IntegerList called 'correctindex'
+        List<String> wrongguesses = new ArrayList<String>();           //'guessedname' is used to take in the correct guesses of user and embed them if the characters are present in the movie name
         List<Integer> correctindex = new ArrayList<>();                //'wronguesses' is used to take in the wrong guesses of the user
                                                                        //'correctindex' is used to maintain a record of the indices of the guessed character appearing in the movie name
 
